@@ -2,6 +2,7 @@
 
 import peewee
 import peewee_validates
+import logging
 from json import loads
 from googleplaces.db import db
 from googleplaces.exceptions import (
@@ -19,6 +20,8 @@ try:
 except ImportError:
     from urllib import urlopen
 
+LOGGER = logging.getLogger('googleplaces.ops')
+LOGGER.setLevel(logging.DEBUG)
 GOOGLE_PLACE_API_KEY = 'AIzaSyBvStMyLJ9WxFIdJJ7J-GQx6wAm0E-MLRA'
 
 
@@ -44,14 +47,17 @@ class GooglePlaceApi:
         self._api_key = api_key
 
     def fetch_search(self, query):
-        with urlopen(
-                '{0.PLACE_URL}/'
-                '{0.TEXT_SEARCH_API_URL}'
-                '?{query}'.format(self, query=query)
-        ) as response:
+        url = (
+            '{0.PLACE_URL}/'
+            '{0.TEXT_SEARCH_API_URL}'
+            '?{query}'.format(self, query=query)
+        )
+        LOGGER.debug('googleplaces.api: sent request %s' % url)
+        with urlopen(url) as response:
             return loads(
                 response.read().decode(response.info().get_param('charset') or 'utf-8')
             )
+
 
     def get_place(self, name):
         """Efetua uma busca na api do tipo 'textsearch'.
@@ -151,13 +157,19 @@ class Place(Model):
         """
         if not cls.filter(name__like=name).exists():
             with db.transaction():
-                query = cls.insert_many(
+                query = cls.insert_many([
                     p for p in google_api.get_place(name)
-                ).upsert(upsert=True)
+                ]).upsert(upsert=True)
+                for q in query.sql():
+                    LOGGER.debug(q)
                 query.execute()
-        return cls.filter(name__like=name)
+        query = cls.filter(name__like=name)
+        LOGGER.debug(query.sql())
+        return query
 
 
 if not Place.table_exists():
+    for q in Place.sqlall():
+        LOGGER.debug(q)
     Place.create_table()
 

@@ -2,9 +2,10 @@
 Webservice​ que faz uma busca de locais pelo nome do local na Google Places API e armazena os resultados.
 
 
-**Instalação de Depedências**
+**Instalar Depedências**
 
-pip3 install -r requirements
+`$ cd google-places-project`
+`$ pip3 install -r requirements`
 
 
 **Versão do Python**
@@ -14,12 +15,17 @@ O Webservice só roda com a versão 3.3 ou acima do Python.
 
 **Rodar Webservice**
 
-python3 run.py 
+`$ cd google-places-project`
+`$ python3 run.py` 
 
 Argumentos:
     --host=`<host>` (Default localhost)
     --port=`<port>` (Default 8000)
 
+
+**Rodar Testes**
+
+`$ PYTHONPATH=<my_dir>/google-places-project python3 tests/<test>.py`
 
 **Api**
 

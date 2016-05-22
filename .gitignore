@@ -61,5 +61,7 @@ target/
 #Ipython Notebook
 .ipynb_checkpoints
 
+places.db
+
 # Pycharm
 .idea/

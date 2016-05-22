@@ -3,7 +3,7 @@
 from tornado.ioloop import IOLoop
 from tornado.options import options
 from tornado.httpserver import HTTPServer
-from googleplaces.app import app
+from googleplaces.log import configure_loggers
 
 options.define(
     'port', help='Ex.: 8000', type=int, default=8000)
@@ -14,6 +14,8 @@ options.define(
 
 def main():
     options.parse_command_line()
+    configure_loggers()
+    from googleplaces.app import app
     server = HTTPServer(app)
     io_loop = IOLoop.instance()
     server.listen(
