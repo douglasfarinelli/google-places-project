@@ -4,7 +4,7 @@ Webservice​ que faz uma busca de locais pelo nome do local na Google Places AP
 
 **Instalação de Depedências**
 
-pip install -r requirements
+pip3 install -r requirements
 
 
 **Versão do Python**
