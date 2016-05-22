@@ -20,13 +20,13 @@ def main():
     io_loop = IOLoop.instance()
     server.listen(
         address=options.host, port=int(options.port or 8000))
-    print('Webservice started in http://{0.host}:{0.port}.'.format(options))
+    print('Starting server at http://{0.host}:{0.port}.'.format(options))
     try:
         io_loop.start()
     except KeyboardInterrupt:
         server.stop()
         io_loop.stop()
-    print('Webservice stopped.')
+    print('Server stopped.')
 
 
 if __name__ == '__main__':
