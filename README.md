@@ -27,7 +27,7 @@ GET `http://<host>:<port>/places/`
 
 Query String
 
-- name: Nome do Local. É obrigatório;
+- name: Nome do Local, é obrigatório;
 
 Retorno
 
@@ -58,7 +58,7 @@ Status Code
 - 201 - OK;
 - 400 - Caso o corpo do request esteja inválido;
 
-DELELTE `http://<host>:<port>/places/<ID>`
+DELETE `http://<host>:<port>/places/<ID>`
 
 Status Code
 
