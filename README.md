@@ -23,7 +23,7 @@ Argumentos:
 
 **Api**
 
-GET `http://<host>:<port>/places/
+GET `http://<host>:<port>/places/`
 
 Query String
 
@@ -39,7 +39,7 @@ Status Code
 - 400 - Caso name não seja passado;
 
 
-POST `http://<host>:<port>/places/
+POST `http://<host>:<port>/places/`
 
 Corpo do Pedido (JSON)
 
