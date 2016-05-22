@@ -19,7 +19,7 @@ class OverQueryLimitError(ApiError):
     def __init__(self):
         super(OverQueryLimitError, self).__init__(
             status_code=403,
-            log_message='Indica que a cota de solicitações a Google Api foi ultrapassada.'
+            log_message='Indica que a cota de soliticações ao Google Places Api foi ultrapassada.'
         )
 
 
@@ -27,8 +27,8 @@ class RequestDeniedError(ApiError):
     def __init__(self):
         super(RequestDeniedError, self).__init__(
             status_code=403,
-            log_message='Indica que a solicitação a Google Api foi negada, devido a key '
-                        'inválida.'
+            log_message='Indica que a solicitação ao Google Places Api foi negada, devido a chave '
+                        'ser inválida.'
         )
 
 
@@ -44,6 +44,6 @@ class InvalidJSONError(ApiError):
     def __init__(self):
         super(ApiError, self).__init__(
             status_code=400,
-            log_message='Indica que o corpo do request contém um JSON inválido.'
+            log_message='Indica que o corpo do request (JSON) está inválido.'
         )
 
