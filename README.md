@@ -9,7 +9,7 @@ pip3 install -r requirements
 
 **Versão do Python**
 
-O Webservice só roda com versões igual ou superior a 3.3 do Python.
+O Webservice só roda com a versão 3.3 ou acima do Python.
 
 
 **Rodar Webservice**
