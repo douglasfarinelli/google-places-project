@@ -17,8 +17,8 @@ O Webservice só roda com a versão 3.3 ou acima do Python.
 python3 run.py 
 
 Argumentos:
-    --host=`<host>`
-    --port=`<port>`
+    --host=`<host>` (Default localhost)
+    --port=`<port>` (Default 8000)
 
 
 **Api**
